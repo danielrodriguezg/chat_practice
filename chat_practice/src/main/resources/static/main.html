@@ -1,0 +1,16 @@
+<html>
+<body>
+<script>
+    window.addEventListener('load', e => {
+        let ws = new WebSocket('ws://localhost:8880/rs');
+        ws.addEventListener('open', () => {
+            let name = window.prompt('name');
+            ws.send(name);
+        });
+        ws.addEventListener('message', msg => {
+            console.log(msg.data);
+        });
+    });
+</script>
+</body>
+</html>
