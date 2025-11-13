@@ -18,6 +18,7 @@ public class Message {
     private Long fromUserId;
     @Column("to_chat_id")
     private Long toChatId;
+    private Boolean writing;
     private String content;
     private LocalDateTime sentAt;
 }

@@ -12,13 +12,18 @@ import reactor.core.publisher.Mono;
 public class MessageController {
     private final IMessageService chatService;
 
-    @MessageMapping("chat.send")
+    @MessageMapping("/chat/send")
     public Mono<Void> sendMessage(Mono<Message> message){
         return message.flatMap(chatService::sendMessage);
     }
 
-    @MessageMapping("chat.stream")
-    public Flux<MessageDto> messageStream(ChatReceiver chat){
+    @MessageMapping("/chat/writing")
+    public Mono<Void> startMessage(Mono<Message> message){
+        return message.flatMap(chatService::writingMessage);
+    }
+
+    @MessageMapping("/chat/stream")
+    public Flux<Message> messageStream(ChatReceiver chat){
         return chatService.getChatroomMessageStream(chat);
     }
 }

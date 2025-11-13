@@ -19,6 +19,7 @@ public class User {
     private String nickname;
     private String password;
     private List<Role> roles;
+    private Boolean connected;
     public User(String nickname){
         this.nickname = nickname;
     }

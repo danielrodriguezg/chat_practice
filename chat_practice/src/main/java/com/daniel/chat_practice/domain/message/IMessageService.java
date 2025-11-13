@@ -6,5 +6,6 @@ import reactor.core.publisher.Mono;
 
 public interface IMessageService {
     Mono<Void> sendMessage(Message message);
-    Flux<MessageDto> getChatroomMessageStream(ChatReceiver chatReceiver);
+    Mono<Void> writingMessage(Message message);
+    Flux<Message> getChatroomMessageStream(ChatReceiver chatReceiver);
 }
